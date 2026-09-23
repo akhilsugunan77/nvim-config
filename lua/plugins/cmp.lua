@@ -1,13 +1,15 @@
-vim.opt.autocomplete = false
-vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'noselect' }
+vim.pack.add({
+  { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
+})
 
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-        local bufnr = args.buf
-        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-
-        if client:supports_method('textDocument/completion') then
-            vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
-        end
-    end,
+require("blink.cmp").setup({
+  keymap = { preset = "default" },
+  completion = {
+    documentation = { auto_show = true, auto_show_delay_ms = 200 },
+  },
+  signature = { enabled = true },
+  sources = {
+    default = { "lsp", "path", "snippets", "buffer" },
+  },
+  fuzzy = { implementation = "prefer_rust_with_warning" },
 })
