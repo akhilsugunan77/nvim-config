@@ -39,6 +39,23 @@ vim.lsp.config("eslint", {
   },
 })
 
+local tailwind_root_dir = vim.lsp.config.tailwindcss.root_dir
+
+vim.lsp.config("tailwindcss", {
+  root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    local markers = require("lspconfig.util").insert_package_json({
+      "tailwind.config.js",
+      "tailwind.config.cjs",
+      "tailwind.config.mjs",
+      "tailwind.config.ts",
+    }, "tailwindcss", fname)
+    if vim.fs.find(markers, { path = fname, upward = true })[1] then
+      tailwind_root_dir(bufnr, on_dir)
+    end
+  end,
+})
+
 local servers = {
   "lua_ls",
   "denols",
