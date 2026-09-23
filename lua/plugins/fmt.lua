@@ -50,7 +50,7 @@ conform.setup({
     },
     oxfmt = {
       require_cwd = true,
-      cwd = util.root_file({ "oxlint.json", ".oxlintrc.json" }),
+      cwd = util.root_file({ ".oxfmtrc.json", ".oxfmtrc.jsonc" }),
     },
   },
 })

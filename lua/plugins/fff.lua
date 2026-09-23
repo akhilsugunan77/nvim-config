@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.g.fff = {
   lazy_sync = true,
-  debug = { enabled = true, show_scores = true },
+  debug = { enabled = false, show_scores = false },
 }
 
 vim.keymap.set("n", "<leader>ff", function()
