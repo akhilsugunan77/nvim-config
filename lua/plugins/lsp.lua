@@ -5,6 +5,8 @@ vim.pack.add({
 
 require("mason").setup({})
 
+vim.diagnostic.config({ virtual_text = true })
+
 vim.lsp.config("lua_ls", {
   root_markers = { ".luarc.json", ".luarc.jsonc", "init.lua", ".git" },
   settings = {
@@ -24,7 +26,14 @@ vim.lsp.config("astro", {
   root_markers = { "astro.config.mjs", "astro.config.js", "astro.config.ts", "package.json" },
 })
 
+local eslint_root_dir = vim.lsp.config.eslint.root_dir
+
 vim.lsp.config("eslint", {
+  root_dir = function(bufnr, on_dir)
+    if not vim.api.nvim_buf_get_name(bufnr):find("/node_modules/", 1, true) then
+      eslint_root_dir(bufnr, on_dir)
+    end
+  end,
   settings = {
     workingDirectories = { mode = "auto" },
   },

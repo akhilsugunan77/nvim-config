@@ -16,6 +16,14 @@ conform.setup({
     javascriptreact = { "biome", "deno_fmt", "oxfmt", "prettier", stop_after_first = true },
     typescriptreact = { "biome", "deno_fmt", "oxfmt", "prettier", stop_after_first = true },
     json = { "biome", "deno_fmt", "prettier", stop_after_first = true },
+    jsonc = { "biome", "deno_fmt", "prettier", stop_after_first = true },
+    css = { "biome", "prettier", stop_after_first = true },
+    scss = { "prettier" },
+    html = { "prettier" },
+    markdown = { "prettier" },
+    yaml = { "prettier" },
+    svelte = { "prettier" },
+    astro = { "prettier" },
   },
 
   formatters = {
@@ -25,20 +33,6 @@ conform.setup({
     },
     prettier = {
       require_cwd = true,
-      cwd = util.root_file({
-        ".prettierrc",
-        ".prettierrc.json",
-        ".prettierrc.yml",
-        ".prettierrc.yaml",
-        ".prettierrc.json5",
-        ".prettierrc.js",
-        ".prettierrc.cjs",
-        ".prettierrc.mjs",
-        ".prettierrc.toml",
-        "prettier.config.js",
-        "prettier.config.cjs",
-        "prettier.config.mjs",
-      }),
     },
     biome = {
       require_cwd = true,

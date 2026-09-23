@@ -7,6 +7,12 @@ local parsers = {
   "json",
   "astro",
   "svelte",
+  "yaml",
+  "toml",
+  "jsdoc",
+  "regex",
+  "graphql",
+  "bash",
 }
 
 vim.api.nvim_create_autocmd("PackChanged", {
@@ -30,6 +36,8 @@ treesitter.install(parsers)
 
 vim.api.nvim_create_autocmd("FileType", {
   callback = function(ev)
-    pcall(vim.treesitter.start, ev.buf)
+    if pcall(vim.treesitter.start, ev.buf) then
+      vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
   end,
 })
