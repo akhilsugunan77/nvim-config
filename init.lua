@@ -19,6 +19,7 @@ vim.opt.updatetime = 250
 vim.opt.undofile = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.winborder = "rounded"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
