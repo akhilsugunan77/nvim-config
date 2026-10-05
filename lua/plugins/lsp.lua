@@ -56,9 +56,15 @@ vim.lsp.config("tailwindcss", {
   end,
 })
 
+vim.lsp.config("gleam", {
+  cmd = { "gleam", "lsp" },
+  root_markers = { "gleam.toml" },
+})
+
 local servers = {
   "lua_ls",
   "denols",
+  "gleam",
   "tsc",
   "tailwindcss",
   "astro",
@@ -67,6 +73,7 @@ local servers = {
   "cssls",
   "jsonls",
   "eslint",
+  "gopls",
 }
 
 for _, server in ipairs(servers) do

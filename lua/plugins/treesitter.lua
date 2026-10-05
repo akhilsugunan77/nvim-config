@@ -12,6 +12,7 @@ local parsers = {
   "jsdoc",
   "regex",
   "graphql",
+  "go",
   "bash",
 }
 
