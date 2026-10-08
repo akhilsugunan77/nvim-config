@@ -1,4 +1,4 @@
--- Download before running :lua require("fff.download").download_or_build_binary()
+-- Download before running : lua require("fff.download").download_or_build_binary()
 vim.pack.add({ "https://github.com/dmtrKovalenko/fff" })
 
 vim.api.nvim_create_autocmd("PackChanged", {

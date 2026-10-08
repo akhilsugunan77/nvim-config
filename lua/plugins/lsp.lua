@@ -74,6 +74,8 @@ local servers = {
   "jsonls",
   "eslint",
   "gopls",
+  "oxfmt",
+  "oxlint",
 }
 
 for _, server in ipairs(servers) do
